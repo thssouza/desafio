@@ -1,6 +1,5 @@
 package com.atech.desafio.voos.resource;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -50,7 +49,7 @@ public class PilotResourceTest {
 
         PilotDTO pilotDTO = new PilotDTO();
         pilotDTO.setId(1L);
-        pilotDTO.setPilotName("Teste");
+        pilotDTO.setName("Teste");
         pilotDTO.setActive(true);
 
         when(pilotService.findById(anyLong())).thenReturn(Optional.of(pilotDTO));
@@ -63,7 +62,7 @@ public class PilotResourceTest {
         final PilotDTO returnedPilotDTO = objectMapper.readValue(jsonReturn, PilotDTO.class);
 
         assertEquals(pilotDTO.getId(), returnedPilotDTO.getId());
-        assertEquals(pilotDTO.getPilotName(), returnedPilotDTO.getPilotName());
+        assertEquals(pilotDTO.getName(), returnedPilotDTO.getName());
         assertTrue(returnedPilotDTO.isActive());
     }
 
@@ -74,13 +73,9 @@ public class PilotResourceTest {
 
         when(pilotService.findById(anyLong())).thenReturn(Optional.empty());
 
-        MvcResult result = mockMvc.perform(get(uri + endpoint))
-                				  .andExpect(status().isOk())
-                				  .andReturn();
+        mockMvc.perform(get(uri + endpoint))
+                			.andExpect(status().isNoContent())
+                			.andReturn();
 
-        final String jsonReturn = result.getResponse().getContentAsString();
-        final PilotDTO returnedPilotDTO = objectMapper.readValue(jsonReturn, PilotDTO.class);
-
-        assertNull(returnedPilotDTO);
     }
 }

@@ -24,6 +24,6 @@ public class Status {
 
 	@NotNull
 	@Column(name = "STDESCRIPTION")
-	private String statusDescription;
+	private String description;
 
 }

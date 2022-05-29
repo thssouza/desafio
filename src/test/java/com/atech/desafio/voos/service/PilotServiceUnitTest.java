@@ -39,7 +39,7 @@ public class PilotServiceUnitTest {
 	public void findByIdUnityTest() {
 		final Pilot pilot = new Pilot();
 		pilot.setId(Long.valueOf(1));
-		pilot.setPilotName("Teste1");
+		pilot.setName("Teste1");
 		pilot.setActive(true);
 
 		final Optional<Pilot> optionalPilot = Optional.of(pilot);
@@ -49,7 +49,7 @@ public class PilotServiceUnitTest {
 
 		assertTrue(foundPilot.isPresent());
 		assertEquals(Long.valueOf(1), foundPilot.get().getId());
-		assertEquals("Teste1", foundPilot.get().getPilotName());
+		assertEquals("Teste1", foundPilot.get().getName());
 		assertTrue(foundPilot.get().isActive());
 
 	}

@@ -6,7 +6,7 @@ import lombok.Data;
 public class PilotDTO {
 
 	private Long id;
-	private String pilotName;
+	private String name;
 	private boolean active;
 
 }

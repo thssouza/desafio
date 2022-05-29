@@ -24,7 +24,7 @@ public class Pilot {
 
 	@NotNull
 	@Column(name = "PLNAME")
-	private String pilotName;
+	private String name;
 
 	@Column(name = "PLACTIVE")
 	private boolean active;

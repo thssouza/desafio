@@ -24,10 +24,10 @@ public class Plane {
 
 	@NotNull
 	@Column(name = "PNMODEL")
-	private String planeModel;
+	private String model;
 
 	@NotNull
 	@Column(name = "PNIDENTCODE")
-	private String planeTailCode;
+	private String tailCode;
 
 }

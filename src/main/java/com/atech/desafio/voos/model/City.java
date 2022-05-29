@@ -24,6 +24,6 @@ public class City {
 
 	@NotNull
 	@Column(name = "CINAME")
-	private String city;
+	private String name;
 
 }
