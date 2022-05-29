@@ -1,0 +1,34 @@
+version: "3"
+
+services:  
+
+  desafio-dtbase:
+    image: postgres:13.1-alpine
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: atech_desafio
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      PGDATA: /desafio-data
+    volumes:
+      - ./assets/postgres/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+    networks: 
+      - desafio-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "desafio@atech.com"
+      PGADMIN_DEFAULT_PASSWORD: "desafio"
+    ports:
+      - "86:86"
+    depends_on:
+      - desafio-dtbase
+    networks:
+      - desafio-network        
+
+networks: 
+  desafio-network:
+    driver: bridge
