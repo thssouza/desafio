@@ -8,9 +8,12 @@ Instalação
 - Para instalação, primeiramente sincronizar a pasta do git no ambiente local;
 - Navegar até o diretório Docker na raiz do projeto;
 - Executar o comando abaixo para baixar as imagens do DockerHub;
-´docker-compose -f docker-compose.yml up´
+
+`docker-compose -f docker-compose.yml up`
+
 - Apos o container ter subido executar o comando abaixo para popular o banco;
-- ´docker exec -i containerDesafio psql -U admin atech_desafio < data/start.sql´
+
+`docker exec -i containerDesafio psql -U admin atech_desafio < data/start.sql`
 
 Com isso a aplicação vai estar em execução, e existe um pgadmin disponivel também;
 
