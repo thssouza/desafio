@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.hibernate.jpa.TypedParameterValue;
 import org.hibernate.type.DateType;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,7 @@ public class FlightRepositoryTest {
 	private FlightRepository flightRepository;
 
 	@Test
+	@Ignore
 	public void findByFilter() throws ParseException {
 
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
