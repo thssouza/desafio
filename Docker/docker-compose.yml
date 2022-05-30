@@ -4,7 +4,7 @@ services:
 
   desafio-dtbase:
     image: postgres:13.1-alpine
-    container_name: postgres
+    container_name: containerDesafio
     ports:
       - "5432:5432"
     environment:
@@ -13,9 +13,16 @@ services:
       POSTGRES_PASSWORD: admin
       PGDATA: /desafio-data
     volumes:
-      - ./assets/postgres/docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
-    networks: 
-      - desafio-network
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - desafio-network  
+
+  desafio-app:
+    image: desafioapp:0.5
+    ports:
+      - "8080:8080"
+    networks:
+      - desafio-network    
 
   pgadmin:
     image: dpage/pgadmin4
@@ -27,8 +34,8 @@ services:
     depends_on:
       - desafio-dtbase
     networks:
-      - desafio-network        
-
+      - desafio-network    
+      
 networks: 
   desafio-network:
     driver: bridge
