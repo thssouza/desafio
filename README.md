@@ -1,7 +1,7 @@
 # desafio
 Desafio para Atech
 
-[b]Instalação[/b]
+Instalação
 
 * Cuidado com outros containers que possam estar executando e possam causar conflitos de portas (5432,8080 e 86).
 
