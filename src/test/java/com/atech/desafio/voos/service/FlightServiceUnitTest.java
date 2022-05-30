@@ -9,16 +9,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Optional;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.atech.desafio.voos.model.City;
 import com.atech.desafio.voos.model.Flight;
@@ -28,11 +27,11 @@ import com.atech.desafio.voos.model.Status;
 import com.atech.desafio.voos.model.transfer.FlightDTO;
 import com.atech.desafio.voos.repository.FlightRepository;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(SpringExtension.class)
 @ComponentScan(basePackages = {"com.atech.desafio.voos"})
 @EnableJpaRepositories(basePackages = "com.atech.desafio.voos.repository")
 @ExtendWith(MockitoExtension.class)
-public class FlightServiceUnitTest {
+class FlightServiceUnitTest {
 
 	@Mock
 	private FlightRepository flightRepository;
@@ -42,7 +41,7 @@ public class FlightServiceUnitTest {
 	private FlightService flightService;
 
 	@Test
-	public void findByIdUnityTest() throws ParseException {
+	void findByIdUnityTest() throws ParseException {
 		final Flight flight = new Flight();
 		final Pilot pilot = new Pilot();
 		final Status status = new Status();

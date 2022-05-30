@@ -1,5 +1,6 @@
 package com.atech.desafio.voos.resource;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyLong;
@@ -9,14 +10,14 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.Optional;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -25,11 +26,11 @@ import com.atech.desafio.voos.service.PilotService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = PilotResource.class)
 @AutoConfigureWebMvc
 @AutoConfigureMockMvc
-public class PilotResourceTest {
+class PilotResourceTest {
 
 	@Autowired
     private MockMvc mockMvc;
@@ -43,7 +44,7 @@ public class PilotResourceTest {
     private final String uri = "/desafio/pilot";
 
     @Test
-    public void findById_WhenTheProfileExists_ShouldReturnTheProfileCorrespondingtoTheId() throws Exception {
+    void findById_WhenTheProfileExists_ShouldReturnTheProfileCorrespondingtoTheId() throws Exception {
 
         String endpoint = "/1";
 
@@ -67,7 +68,7 @@ public class PilotResourceTest {
     }
 
     @Test
-    public void findById_WhenProfileDoesNotExist_ShouldReturnEmpty() throws Exception {
+    void findById_WhenProfileDoesNotExist_ShouldReturnEmpty() throws Exception {
 
         String endpoint = "/1";
 

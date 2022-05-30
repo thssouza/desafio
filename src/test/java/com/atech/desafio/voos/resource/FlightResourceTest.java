@@ -1,5 +1,6 @@
 package com.atech.desafio.voos.resource;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -10,14 +11,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureWebMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 
@@ -26,11 +27,11 @@ import com.atech.desafio.voos.model.transfer.FlightDTO;
 import com.atech.desafio.voos.service.FlightService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest(classes = FlightResource.class)
 @AutoConfigureWebMvc
 @AutoConfigureMockMvc
-public class FlightResourceTest {
+class FlightResourceTest {
 
 	@Autowired
     private MockMvc mockMvc;
@@ -44,7 +45,7 @@ public class FlightResourceTest {
 
 
     @Test
-    public void findByFilter_WhenTheFlightExists_ShouldReturnTheFlightCorrespondingtoTheId() throws Exception {
+    void findByFilter_WhenTheFlightExists_ShouldReturnTheFlightCorrespondingtoTheId() throws Exception {
 
         String endpoint = "/desafio/flight/filter";
 
