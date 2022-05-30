@@ -1,33 +1,3 @@
-DELETE FROM tb_city;
-
-INSERT INTO tb_city (ciid, ciname) VALUES (1, 'SAO PAULO');
-INSERT INTO tb_city (ciid, ciname) VALUES (2, 'MANAUS');
-INSERT INTO tb_city (ciid, ciname) VALUES (3, 'RIO DE JANEIRO');
-INSERT INTO tb_city (ciid, ciname) VALUES (4, 'BRASILIA');
-
-DELETE FROM tb_pilot;
-
-INSERT INTO tb_pilot (plid, plname, plactive) VALUES (1, 'Joao da Silva', true);
-INSERT INTO tb_pilot (plid, plname, plactive) VALUES (2, 'Jose de Souza', true);
-INSERT INTO tb_pilot (plid, plname, plactive) VALUES (3, 'John dos Santos', true);
-INSERT INTO tb_pilot (plid, plname, plactive) VALUES (4, 'Jonatan Oliveira', true);
-INSERT INTO tb_pilot (plid, plname, plactive) VALUES (5, 'Julio Cesar', false);
-
-DELETE FROM tb_plane;
-
-INSERT INTO tb_plane (pnid, pnmodel, pnidentcode) VALUES (1, 'B772', 'G38265');
-INSERT INTO tb_plane (pnid, pnmodel, pnidentcode) VALUES (2, 'B772', 'G31549');
-INSERT INTO tb_plane (pnid, pnmodel, pnidentcode) VALUES (3, 'B738', 'G31859');
-INSERT INTO tb_plane (pnid, pnmodel, pnidentcode) VALUES (4, 'B738', 'G35467');
-
-DELETE FROM tb_status;
-
-INSERT INTO tb_status (stid, stdescription) VALUES (1, 'EN ROUTE ON TIME');
-INSERT INTO tb_status (stid, stdescription) VALUES (2, 'EN ROUTE DELAY');
-INSERT INTO tb_status (stid, stdescription) VALUES (3, 'LANDED');
-INSERT INTO tb_status (stid, stdescription) VALUES (4, 'SCHEDULED');
-INSERT INTO tb_status (stid, stdescription) VALUES (5, 'CANCELED');
-
 DELETE FROM tb_flight;
 
 INSERT INTO tb_flight (flid, flplaneid, flpilotid, fldepartcityid, flarrivecityid, fldepartdate, flarriveddate, flstatusid) VALUES (1, 4, 5, 1, 3, '2022-01-01 22:20:00', '2022-01-02 00:30:00', 3);

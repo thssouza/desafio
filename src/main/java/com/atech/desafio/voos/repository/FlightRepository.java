@@ -26,14 +26,14 @@ public interface FlightRepository extends JpaRepository <Flight,Long> {
 			+ "                                                                 fl.status.description"
 			+ ") "
 			+ "     FROM Flight fl "
-			+ "     WHERE (UPPER(fl.pilot.name) LIKE CONCAT('%', UPPER(:pilotName), '%') OR :pilotName IS NULL) "
-			+ "       AND (fl.plane.model = :planeModel OR :planeModel IS NULL)"
-			+ "       AND (fl.plane.tailCode = :planeTailCode OR :planeTailCode IS NULL)"
-			+ "       AND (fl.cityDepart.name = :cityDepart OR :cityDepart IS NULL)"
-			+ "       AND (fl.cityArrive.name = :cityArrive OR :cityArrive IS NULL)"
-			+ "       AND (CAST(fl.departTime as date) = CAST(COALESCE(:departTime, NULL) as date) OR CAST (COALESCE (:departTime, NULL) as date) IS NULL)"
+			+ "     WHERE (UPPER(CAST(fl.pilot.name as text)) LIKE CONCAT('%', UPPER(CAST(:pilotName as text)), '%') OR CAST(:pilotName as text) IS NULL) "
+			+ "       AND (CAST(fl.plane.model as text) = CAST(:planeModel as text) OR CAST(:planeModel as text) IS NULL)"
+			+ "       AND (CAST(fl.plane.tailCode as text) = CAST(:planeTailCode as text) OR CAST(:planeTailCode as text) IS NULL)"
+			+ "       AND (CAST(fl.cityDepart.name as text) = CAST(:cityDepart as text) OR CAST(:cityDepart as text) IS NULL)"
+			+ "       AND (CAST(fl.cityArrive.name as text) = CAST(:cityArrive as text) OR CAST(:cityArrive as text) IS NULL)"
+			+ "       AND (CAST(fl.departTime as date) = case when CAST(COALESCE(:departTime, NULL) as date) is null then CAST(fl.departTime as date) else CAST(COALESCE (:departTime, NULL) as date) END)"
 			+ "       AND (CAST(fl.arriveTime AS date) = CAST(COALESCE(:arriveTime, NULL) AS date) OR CAST (COALESCE(:arriveTime, NULL) AS date) IS NULL)"
-			+ "       AND (fl.status.description = :statusDescription OR :statusDescription IS NULL)"
+			+ "       AND (CAST(fl.status.description as text) = CAST(:statusDescription as text) OR CAST(:statusDescription as text) IS NULL)"
 			)
 	public List<FlightDTO> findByFilter (final @Param("pilotName") String pilotName,
 										 final @Param("planeModel") String planeModel,
